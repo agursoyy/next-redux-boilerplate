@@ -1,0 +1,90 @@
+{
+  "editor.cursorStyle": "underline",
+  "editor.cursorBlinking": "smooth",
+  "workbench.colorTheme": "Night Owl",
+  "explorer.autoReveal": false,
+  "workbench.startupEditor": "newUntitledFile",
+  "window.newWindowDimensions": "fullscreen",
+  "prettier.eslintIntegration": true,
+  "prettier.tslintIntegration": true,
+  "prettier.jsxSingleQuote": false,
+  "prettier.singleQuote": true,
+  "prettier.endOfLine": "lf",
+  "prettier.stylelintIntegration": true,
+  "prettier.trailingComma": "all",
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "editor.tabSize": 2,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.vscode": true,
+    "**/.DS_Store": true,
+    "**/.idea": true,
+    "**/.gradle": true,
+    ".next": true,
+    "**/.next": true,
+    "node_modules": false,
+    ".idea": true,
+    "dev": true
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "window.zoomLevel": 0,
+  "npm.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  "scss.validate": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "eslint.options": {
+    "experimentalDecorators": true
+  },
+  "javascript.implicitProjectConfig.experimentalDecorators": true,
+  "editor.foldingStrategy": "indentation",
+  "git.confirmSync": false,
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#010B19",
+    "activityBar.border": "#102a44",
+    "sideBar.background": "#011425c7",
+    "sideBar.border": "#102a44",
+    "sideBar.foreground": "#aac4d3"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "workbench.editor.showTabs": true,
+  "workbench.statusBar.visible": true,
+  "workbench.activityBar.visible": true,
+  "diffEditor.ignoreTrimWhitespace": true,
+  "explorer.confirmDelete": false,
+  "editor.suggestSelection": "first",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+  },
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "editor.renderWhitespace": "all",
+  "typescript.updateImportsOnFileMove.enabled": "always"
+}

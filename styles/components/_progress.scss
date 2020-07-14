@@ -1,0 +1,73 @@
+//stylelint-disable
+#nprogress {
+  pointer-events: none;
+
+  .bar {
+    background: $primary;
+    height: 4px;
+    left: 0;
+
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    z-index: 1031;
+  }
+
+  .peg {
+    box-shadow: 0 0 10px $primary, 0 0 5px $primary;
+    display: block;
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    right: 0px;
+
+    transform: rotate(3deg) translate(0px, -4px);
+    width: 100px;
+  }
+
+  .spinner {
+    display: block;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    z-index: 1031;
+
+    &-icon {
+      animation: nprogress-spinner 400ms linear infinite;
+
+      border: solid 2px transparent;
+      border-left-color: $primary;
+      border-radius: 50%;
+      border-top-color: $primary;
+      box-sizing: border-box;
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  &-custom-parent {
+    overflow: hidden;
+    position: relative;
+
+    #nprogress {
+
+      .spinner,
+      .bar {
+        position: absolute;
+      }
+    }
+  }
+}
+
+@keyframes nprogress-spinner {
+
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+//stylelint-enable

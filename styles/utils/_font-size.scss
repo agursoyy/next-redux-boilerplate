@@ -1,0 +1,19 @@
+.font-size {
+
+  @each $key in map-keys($sizes) {
+    $value: map-get($sizes, $key);
+
+    &-#{$key} {
+      font-size: calc(1em #{$value});
+    }
+  }
+
+  &-none {
+    font-size: 0;
+  }
+
+  &-regular,
+  &-normal {
+    font-size: 1rem;
+  }
+}
