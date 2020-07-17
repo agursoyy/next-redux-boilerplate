@@ -13,7 +13,7 @@ const initialState: AuthState = {
 
 export function authReducer(
   state = initialState,
-  action: any // AuthActionTypes
+  action: AuthActionTypes // AuthActionTypes
 ): AuthState {
   switch (action.type) {
     case 'USER_LOGIN':

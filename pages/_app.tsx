@@ -1,29 +1,44 @@
+import App, { Container, AppInitialProps, AppContext } from 'next/app';
+
 import React from 'react';
-import { NextPageContext } from 'next';
-import App, { AppInitialProps, AppContext, Container } from 'next/app';
-import withRedux from 'next-redux-wrapper';
+import withReduxStore from '../stores/with-redux-store';
+import { Store } from '../stores';
 import { Provider } from 'react-redux';
-import { Store, RootState, wrapper } from '../stores';
 import { login } from '../stores/auth/actions';
+import { success } from '../stores/alert/actions';
+
+
+interface IAppContext extends AppContext {
+  store?: Store;
+}
 
 interface IProps extends AppInitialProps {
-  store: any;
+  store: Store;
 }
 
-class MyApp extends App<IProps> {
-  static async getInitialProps({ Component, ctx }: AppContext) {
-    const { store } = ctx;
-    store.dispatch(login({ email: 'email', password: 'password' }));
-    console.log(store.getState());
-    return { pageProps: {} };
-  }
-  render() {
-    const { Component, pageProps, store } = this.props;
-    console.log(store);
-    return (
-      <Component {...pageProps} />
-    );
-  }
-}
 
-export default wrapper.withRedux(MyApp);
+export default withReduxStore(
+  class MyApp extends App<IProps> {
+    static async getInitialProps({ Component, ctx, store }: IAppContext) {
+      let pageProps = {};
+      if (Component.getInitialProps) {
+        pageProps = await Component.getInitialProps(ctx);
+      }
+      store!.dispatch(login({ email: 'email', password: 'password' })); // store! -> we are sure it exists.
+
+      return { pageProps };
+    }
+    render() {
+      const { Component, pageProps, store } = this.props;
+
+      return (
+        <Container>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </Container>
+      );
+    }
+  }
+
+);

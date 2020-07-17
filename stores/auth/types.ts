@@ -8,20 +8,20 @@ export const LOGIN = 'USER_LOGIN';
 
 export type auth_status = 'logged_in' | 'not_logged_in';
 
-export interface Auth {
-  user: any
-  message: auth_status
-}
-
 export interface AuthState {
   user: any,
   message: auth_status
 }
 
 
+export interface Auth {
+  user: any
+  message: auth_status
+}
 
-interface Login {
+interface LoginAction {
   type: typeof LOGIN
   payload: Auth
 }
-export type AuthActionTypes = Login
+
+export type AuthActionTypes = LoginAction
