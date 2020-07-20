@@ -1,6 +1,7 @@
-import App, { Container, AppInitialProps, AppContext } from 'next/app';
-
 import React from 'react';
+import App, { Container, AppInitialProps, AppContext } from 'next/app';
+import '../styles/index.scss';
+
 import withReduxStore from '../stores/with-redux-store';
 import { Store } from '../stores';
 import { Provider } from 'react-redux';

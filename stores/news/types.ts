@@ -8,16 +8,13 @@ export interface NewsState {
   news: Array<any>
 }
 
-interface FetchNewsRequest {
-  type: typeof FETCH_NEWS_REQUEST
-}
-interface GetNews {
+interface GetNews {  //type of the action which will be returned by the action creator.
   type: typeof GET_NEWS
 }
 
-interface FetchNews {
+interface FetchNews {//type of the action which will be returned by the action creator.
   type: typeof NEWS_RECEIVED,
   payload: Array<any>
 }
 
-export type NewsActionTypes = FetchNewsRequest | FetchNews | GetNews
+export type NewsActionTypes = GetNews | FetchNews

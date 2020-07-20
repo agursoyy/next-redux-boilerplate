@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 import { NextPage } from 'next';
-import { RootState } from '../stores';
+import { RootState } from '../../stores';
 import { connect, ConnectedProps } from 'react-redux';
-import { success } from '../stores/alert/actions';
+import { success } from '../../stores/alert/actions';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { fetchNews } from '../stores/news/actions';
+import { fetchNews } from '../../stores/news/actions';
 
 /*
 const mapState = (state: RootState) => ({
@@ -38,7 +38,7 @@ const Home: NextPage<Props> = ({ }) => {
       <h2>Home Page</h2>
       <h3>{auth.message}</h3>
       <i className="icon icon-times"></i>
-      <button className="btn btn-primary" onClick={login} >Press</button>
+      <button className="btn btn-red" onClick={login} >Press</button>
     </div >
   )
 
