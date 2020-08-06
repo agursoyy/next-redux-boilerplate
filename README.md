@@ -12,7 +12,7 @@
 
 ### **System Requirements**
 - [NodeJS] 
-- [Yarn] or
+- [Yarn]
 - [Npm]
 
 [nodejs]: http://nodejs.org
