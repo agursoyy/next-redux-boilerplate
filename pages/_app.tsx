@@ -1,45 +1,60 @@
-import React from 'react';
-import App, { Container, AppInitialProps, AppContext } from 'next/app';
+import React, { FC, useState } from 'react';
+import { NextPage } from 'next';
+import App, { Container, AppInitialProps, AppContext, AppProps } from 'next/app';
+import getConfig from 'next/config';
+
 import '../styles/index.scss';
 
-import withReduxStore from '../stores/with-redux-store';
-import { Store } from '../stores';
-import { Provider } from 'react-redux';
+import { Store, wrapper, RootState } from '../stores';
+import { Provider, useSelector } from 'react-redux';
 import { login } from '../stores/auth/actions';
 import { success } from '../stores/alert/actions';
 
+const { publicRuntimeConfig } = getConfig();
 
 interface IAppContext extends AppContext {
   store?: Store;
 }
 
 interface IProps extends AppInitialProps {
-  store: Store;
+  pageConfig: any;
 }
 
-
-export default withReduxStore(
-  class MyApp extends App<IProps> {
-    static async getInitialProps({ Component, ctx, store }: IAppContext) {
-      let pageProps = {};
-      if (Component.getInitialProps) {
-        pageProps = await Component.getInitialProps(ctx);
-      }
-      store!.dispatch(login({ email: 'email', password: 'password' })); // store! -> we are sure it exists.
-
-      return { pageProps };
+class MyApp extends App<IProps> {
+  public static getInitialProps = async ({ Component, ctx }: AppContext) => {
+    // ctx.store.dispatch(login({ email: 'email', password: 'password' }) as any); // store! -> we are sure it exists.
+    let pageConfig = publicRuntimeConfig.pageConfig; // get page config from next.config
+    if ((Component as any).pageConfig) {
+      pageConfig = {
+        // merge page configs with child component.
+        ...pageConfig,
+        ...(Component as any).pageConfig,
+      };
     }
-    render() {
-      const { Component, pageProps, store } = this.props;
-
-      return (
-        <Container>
-          <Provider store={store}>
-            <Component {...pageProps} />
-          </Provider>
-        </Container>
-      );
+    if (true) {
+      console.log(true);
     }
+
+    return {
+      pageProps: {
+        // Call page-level getInitialProps
+        ...(Component.getInitialProps ? await Component.getInitialProps(ctx) : {}),
+        // Some custom thing for all pages
+        pathname: ctx.pathname,
+      },
+      pageConfig,
+    };
+  };
+
+  public render() {
+    const { Component, pageProps, pageConfig } = this.props;
+    console.log(pageConfig);
+    return (
+      <Container>
+        <Component {...pageProps} />
+      </Container>
+    );
   }
+}
 
-);
+export default wrapper.withRedux(MyApp);

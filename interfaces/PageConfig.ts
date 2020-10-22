@@ -5,5 +5,3 @@ export default interface IPageConfig {
   footer?: boolean;
   // eslint-disable-next-line semi
 }
-
-

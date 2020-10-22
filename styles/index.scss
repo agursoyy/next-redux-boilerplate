@@ -1,8 +1,8 @@
-@import "mixins/index";
-@import "variables/index";
-@import "../node_modules/bootstrap/scss/bootstrap.scss";
-@import "utils/index";
-@import "./components/**/*.scss";
-@import "bootstrap/index";
-@import "./pages/**/*.scss";
-@import "components/index";
+@import 'mixins/index';
+@import 'variables/index';
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import 'utils/index';
+@import './components/**/*.scss';
+@import 'bootstrap/index';
+@import './pages/**/*.scss';
+@import 'components/index';

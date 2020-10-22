@@ -5,15 +5,15 @@ import getConfig from 'next/config';
 
 type IParams = {
   url: string;
-  method?: 'get' | 'post' | 'put' | 'delete',
+  method?: 'get' | 'post' | 'put' | 'delete';
   form?: {
-    [x: string]: any
+    [x: string]: any;
   };
   auth?: boolean;
-}
-const { publicRuntimeConfig: {
-  api
-} } = getConfig();
+};
+const {
+  publicRuntimeConfig: { api },
+} = getConfig();
 
 export default class Api {
   private apiUrl = api;
@@ -26,12 +26,8 @@ export default class Api {
     this.fetch({ url: '/todos/1', auth: false });
   }
 
-  public fetch = ({
-    url,
-    method = 'get',
-    form,
-    auth = true,
-  }: IParams, expected?: number) => { // expected http response status
+  public fetch = ({ url, method = 'get', form, auth = true }: IParams, expected?: number) => {
+    // expected http response status
     const config = {
       data: {},
       headers: {},
@@ -48,27 +44,24 @@ export default class Api {
       if (method === 'get') {
         const queryParams = queryString.stringify(form, { arrayFormat: 'bracket' });
         config.url = `${config.url}?${queryParams}`;
-      }
-      else {
+      } else {
         config.data = { ...form };
       }
     }
 
-    return Axios(config).then(({ data, status }) => {
-      return expected ? (expected === status ? data : null) : { data, status };
-    }
-    ).catch(err => {
-      if (err.response) {
-        const { status, data } = err.response;
-        if (status === 401) {
-          // if(this.refreshToken ) {} // auth not implemented yet.
+    return Axios(config)
+      .then(({ data, status }) => {
+        return expected ? (expected === status ? data : null) : { data, status };
+      })
+      .catch((err) => {
+        if (err.response) {
+          const { status, data } = err.response;
+          if (status === 401) {
+            // if(this.refreshToken ) {} // auth not implemented yet.
+          }
+
+          return status === 400 ? data : { data, status };
         }
-
-        return status === 400 ? data : { data, status };
-      }
-    });
-  }
-
-
-
+      });
+  };
 }

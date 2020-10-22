@@ -23,11 +23,7 @@ module.exports = ({ family, fontPath, unicodes }) => {
     (prev, { name, unicode }) => ({
       ...prev,
       [name.toLowerCase().replace(/\s/g, '-')]:
-        '\\' +
-        unicode
-          .charCodeAt(0)
-          .toString(16)
-          .toLowerCase(),
+        '\\' + unicode.charCodeAt(0).toString(16).toLowerCase(),
     }),
     {},
   );
@@ -36,7 +32,7 @@ module.exports = ({ family, fontPath, unicodes }) => {
     [family]: glyphs,
   };
 
-  const toSCSS = items =>
+  const toSCSS = (items) =>
     JSON.stringify(items, null, '\t')
       .replace(/\{/g, '(')
       .replace(/\}/g, ')')

@@ -4,20 +4,20 @@ $dusk: #577592 !default;
 $candlelight: #f9d423 !default;
 
 $colors: (
-  "white": $white,
-  "black": $black,
-  "dusk": $dusk,
-  "candlelight": $candlelight
+  'white': $white,
+  'black': $black,
+  'dusk': $dusk,
+  'candlelight': $candlelight,
 ) !default;
 
 $primary-color: $dusk !default;
 $secondary-color: $candlelight !default;
 
 $theme-colors: (
-  "black": $black,
-  "white": $white,
-  "dusk": $dusk,
-  "candlelight": $candlelight
+  'black': $black,
+  'white': $white,
+  'dusk': $dusk,
+  'candlelight': $candlelight,
 ) !default;
 
 $body-color: $black !default;

@@ -1,6 +1,9 @@
 {
   "editor.cursorStyle": "underline",
   "editor.cursorBlinking": "smooth",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
   "workbench.colorTheme": "Night Owl",
   "explorer.autoReveal": false,
   "workbench.startupEditor": "newUntitledFile",
@@ -39,8 +42,8 @@
   "eslint.packageManager": "yarn",
   "scss.validate": true,
   "eslint.validate": [
-    "javascript",
-    "javascriptreact",
+    "typescript",
+    "typescriptreact",
     {
       "language": "typescript",
       "autoFix": true
@@ -71,7 +74,8 @@
   "explorer.confirmDelete": false,
   "editor.suggestSelection": "first",
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

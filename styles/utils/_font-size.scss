@@ -1,5 +1,4 @@
 .font-size {
-
   @each $key in map-keys($sizes) {
     $value: map-get($sizes, $key);
 

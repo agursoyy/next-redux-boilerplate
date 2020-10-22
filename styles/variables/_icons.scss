@@ -1,7 +1,7 @@
 $data: (
-  "icons": (
-    "times": "\ea01"
-  )
+  'icons': (
+    'times': '\ea01',
+  ),
 );
 
 @include font-face(icons);
@@ -11,9 +11,7 @@ $data: (
   font-style: normal;
 
   @each $icon, $content in map-get($data, icons) {
-
     &-#{$icon} {
-      
       // stylelint-disable-next-line max-nesting-depth
       &::before {
         content: $content;
