@@ -1,7 +1,7 @@
 .root {
   .myclass {
     .deneme {
-      color: #999;
+      color: var(#999);
     }
   }
 }
